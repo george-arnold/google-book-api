@@ -13,4 +13,4 @@ class BookStatus extends Component{
   }
 }
 
-export default BookStatuski;
+export default BookStatus;
