@@ -1,9 +1,15 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import React, {Component}from 'react';
+import Books from './Books/Books'
+import UserInput from './UserInput/UserInput'
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+class App extends Component {
+  render() {
+    return (
+      <main className='App'>
+        {/* content goes here */}
+      </main>
+    );
+  }
+}
+
+export default App;
