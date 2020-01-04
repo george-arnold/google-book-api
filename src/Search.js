@@ -5,11 +5,12 @@ class Search extends Component {
     super();
     this.state = {
       searchTerm: ''
-    }
+    };
   }
   changeSelection = (value) => {
     this.setState({ 
       searchTerm: value });
+    this.props.getBooks(this.state.searchTerm);
     }
 
   render() {
@@ -17,7 +18,12 @@ class Search extends Component {
       <form>
         <input 
         type = 'search' 
-        onChange={e => this.changeSelection(e.target.value)}/>
+        onSubmit = {e => this.changeSelection(e.target.value)} />
+
+        <input 
+        type = 'submit'
+
+        />
       </form>
     )
   }

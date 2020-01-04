@@ -12,6 +12,7 @@ class App extends Component {
       books: [],
     };
   }
+
   getBooks = (searchTerm) => {
     fetch(
       `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=AIzaSyB9N3gY_0s9sVNzP-6g8DX_2LGd3pGSuaA`
@@ -40,9 +41,12 @@ class App extends Component {
     return (
       <main className="App">
         <h1> Google Book Search</h1>
-        <Search searchFor= {this.getBooks} />
+        <Search 
+        getBooks= {this.getBooks} 
+        
+        />
         <Filters />
-        <Books />
+        <Books books={this.state.books}/>
       </main>
     );
   }

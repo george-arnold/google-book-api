@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import BookStatus from './BookStatus';
-import BookType from './BookType';
+
 
 class Filters extends Component{
   render() {
