@@ -10,6 +10,7 @@ class App extends Component {
     super();
     this.state = {
       books: [],
+      filteredBooks:[]
     };
   }
 
@@ -38,10 +39,14 @@ class App extends Component {
   }
   useFilterPrint = (print) => { 
     //filter the books array by printType
+    let books= this.state.books;
+    books= books.filter(el=>el.volumeInfo.title==="The Way of Kings");
     this.setState({
-      books: books.filter(el=>el.volumeInfo.printType===print)
+      filteredBooks: this.books,
     })
-  }
+    console.log(this.state.filteredBooks);
+    }
+  
 
   useFilterType = (type) => {console.log(type)}
 
@@ -55,7 +60,9 @@ class App extends Component {
         />
         <Filters useFilterType={this.useFilterType}
         useFilterPrint={this.useFilterPrint} />
-        <Books books={this.state.books}/>
+        
+        <Books books={this.state.filteredBooks}/>
+
       </main>
     );
   }

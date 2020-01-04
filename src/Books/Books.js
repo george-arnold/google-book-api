@@ -6,7 +6,7 @@ class Books extends Component {
     // psuedocode- map over data passed down, with index, dont forget key, pass into Details
     return (
       <div>
-        <Details />
+        {this.props.books}
       </div>
     );
   }
