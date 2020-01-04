@@ -6,21 +6,28 @@ class Search extends Component {
     this.state = {
       searchTerm: ''
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  changeSelection (e){
-    e.preventDefaut();
+
+  handleChange(e){
     this.setState({ 
-      searchTerm: this.target.value });
+      searchTerm: e.target.value });
     }
+  handleSubmit(e){
+    this.props.getBooks(this.state.searchTerm);
+    e.preventDefault();
+  }
 
   render() {
     return (
-      <form onSubmit = {e => this.changeSelection}>
-          <input type="text" />
-
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input type="text" placeholder='King Henry' value={this.state.searchTerm} onChange={this.handleChange} />
+        </label>
         <input type="submit" value="Submit" />
       </form>
-
     )
   }
 }

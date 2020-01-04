@@ -13,9 +13,9 @@ class App extends Component {
     };
   }
 
-  getBooks = () => {
+  getBooks = (searchTerm) => {
     fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=${this.state.searchTerm}&key=AIzaSyB9N3gY_0s9sVNzP-6g8DX_2LGd3pGSuaA`
+      `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=AIzaSyB9N3gY_0s9sVNzP-6g8DX_2LGd3pGSuaA`
     )
       .then(response => {
         if (!response.ok) {
@@ -36,6 +36,12 @@ class App extends Component {
         });
       });
   }
+  useFilterPrint = (books,print) => { 
+    //filter the books array by printType
+    return books.filter(el=>el.volumeInfo.printType===print)
+     
+  }
+  useFilterType = (type) => {console.log(type)}
 
   render() {
     return (
@@ -45,7 +51,8 @@ class App extends Component {
         getBooks= {this.getBooks} 
         
         />
-        <Filters />
+        <Filters useFilterType={this.useFilterType}
+        useFilterPrint={this.useFilterPrint} />
         <Books books={this.state.books}/>
       </main>
     );
