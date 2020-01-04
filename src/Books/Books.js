@@ -5,7 +5,7 @@ class Books extends Component {
   render() {
     return (
       <div>
-        {this.props.books.map((user, idx) => {
+        {this.props.books.map((x,idx) => {
           return (
             <Details
             key={idx} 
