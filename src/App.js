@@ -40,7 +40,7 @@ class App extends Component {
   useFilterPrint = (print) => { 
     //filter the books array by printType
     let books= this.state.books;
-    books= books.filter(el=>el.volumeInfo.title==="The Way of Kings");
+    books= books.filter(el=>el.volumeInfo.printType===print);
     this.setState({
       filteredBooks: this.books,
     })
