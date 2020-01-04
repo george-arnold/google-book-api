@@ -38,9 +38,11 @@ class App extends Component {
   }
   useFilterPrint = (books,print) => { 
     //filter the books array by printType
-    return books.filter(el=>el.volumeInfo.printType===print)
-     
+    this.setState({
+      books: books.filter(el=>el.volumeInfo.printType===print)
+    })
   }
+
   useFilterType = (type) => {console.log(type)}
 
   render() {
