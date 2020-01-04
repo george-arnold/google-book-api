@@ -42,7 +42,7 @@ class App extends Component {
       <main className="App">
         <h1> Google Book Search</h1>
         <Search 
-        getBooks= {this.getBooks} 
+        getBooks= {this.getBooks(searchTerm)} 
         
         />
         <Filters />
