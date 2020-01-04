@@ -10,7 +10,6 @@ class Search extends Component {
   changeSelection = (value) => {
     this.setState({ 
       searchTerm: value });
-    this.props.getBooks(this.state.searchTerm);
     }
 
   render() {
@@ -18,7 +17,9 @@ class Search extends Component {
       <form>
         <input 
         type = 'search' 
-        onSubmit = {e => this.changeSelection(e.target.value)} />
+        onSubmit = {e => this.changeSelection(e.target.value)
+        .then(this.props.getBooks(this.state.searchTerm))}
+         />
 
         <input 
         type = 'submit'
