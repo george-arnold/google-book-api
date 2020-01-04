@@ -45,8 +45,12 @@ class App extends Component {
 
   useFilterType = (type) => {console.log(type)}
 
+
   render() {
- const filteredBooks= this.state.books.filter(el=>el.volumeInfo.printType===this.state.filterPrint);
+    let filteredBooks = this.state.books;
+  if (this.state.filterPrint==='') {
+  } else {
+ let filteredBooks= this.state.books.filter(el=>el.volumeInfo.printType===this.state.filterPrint);}
     return (
       <main className="App">
         <h1> Google Book Search</h1>
