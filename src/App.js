@@ -13,9 +13,9 @@ class App extends Component {
     };
   }
 
-  getBooks = (searchTerm) => {
+  getBooks = () => {
     fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=AIzaSyB9N3gY_0s9sVNzP-6g8DX_2LGd3pGSuaA`
+      `https://www.googleapis.com/books/v1/volumes?q=${this.state.searchTerm}&key=AIzaSyB9N3gY_0s9sVNzP-6g8DX_2LGd3pGSuaA`
     )
       .then(response => {
         if (!response.ok) {

@@ -10,21 +10,17 @@ class Search extends Component {
   changeSelection (e){
     e.preventDefaut();
     this.setState({ 
-      searchTerm: e.target.value });
+      searchTerm: this.target.value });
     }
-    
+
   render() {
     return (
-      <form onSubmit = {e => this.changeSelection(e)}>
-        <input 
-        type = 'search' 
-         />
+      <form onSubmit = {e => this.changeSelection}>
+          <input type="text" />
 
-        <input 
-        type = 'submit'
-
-        />
+        <input type="submit" value="Submit" />
       </form>
+
     )
   }
 }
