@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+import BookStatus from './BookStatus';
+import BookType from './BookType';
 
-class BookType extends Component{
+class Filters extends Component{
   render() {
     return (
       <form>
@@ -13,4 +15,4 @@ class BookType extends Component{
   }
 }
 
-export default BookType;
+export default Filters;
