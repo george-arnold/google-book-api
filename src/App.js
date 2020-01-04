@@ -39,18 +39,15 @@ class App extends Component {
   }
   useFilterPrint = (print) => { 
     //filter the books array by printType
-    let books= this.state.books;
-    books= books.filter(el=>el.volumeInfo.printType===print);
-    this.setState({
-      filteredBooks: this.books,
-    })
-    console.log(this.state.filteredBooks);
+    const filteredBooks= this.state.books.filter(el=>el.volumeInfo.printType===print);
+    console.log('filtered books', filteredBooks);
     }
   
 
   useFilterType = (type) => {console.log(type)}
 
   render() {
+    // const filteredBooks = how do I get the list of filtered books here
     return (
       <main className="App">
         <h1> Google Book Search</h1>
@@ -61,7 +58,7 @@ class App extends Component {
         <Filters useFilterType={this.useFilterType}
         useFilterPrint={this.useFilterPrint} />
         
-        <Books books={this.state.filteredBooks}/>
+        <Books books={this.filteredBooks}/>
 
       </main>
     );

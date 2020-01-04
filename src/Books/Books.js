@@ -3,10 +3,11 @@ import Details from './Details'
 
 class Books extends Component {
   render() {
-    // psuedocode- map over data passed down, with index, dont forget key, pass into Details
+    console.log('Books console log',this.props.books)
+    // psuedocode- map this
     return (
       <div>
-        {this.props.books}
+        <h2> Book information goes here</h2>
       </div>
     );
   }
