@@ -36,7 +36,7 @@ class App extends Component {
         });
       });
   }
-  useFilterPrint = (books,print) => { 
+  useFilterPrint = (print) => { 
     //filter the books array by printType
     this.setState({
       books: books.filter(el=>el.volumeInfo.printType===print)
