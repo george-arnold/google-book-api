@@ -11,7 +11,7 @@ class Filters extends Component{
         name= 'type'
         onChange= {e => this.props.useFilterPrint(e.target.value)}
         >
-          <option value='any'>Any</option>
+          <option value=''>Any</option>
           <option value='horror'>Horror</option>
           <option value='action'>Action</option>
         </select>
@@ -21,7 +21,7 @@ class Filters extends Component{
         name= 'print'
         onChange= {e => this.props.useFilterPrint(e.target.value)}>
         >
-          <option value='all'>All</option>
+          <option value=''>Any</option>
           <option value='BOOK'>Book</option>
           <option value='ebook'>Ebook</option>
         </select>
