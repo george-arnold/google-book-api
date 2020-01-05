@@ -10,7 +10,8 @@ class App extends Component {
     super();
     this.state = {
       books: [],
-      filterPrint: ""
+      filterPrint: "",
+      filterType: ""
     };
   }
 
@@ -38,24 +39,31 @@ class App extends Component {
       });
   };
   useFilterPrint = print => {
-    //filter the books array by printType
     this.setState({ filterPrint: print });
-    console.log( 'first log', this.state.filterPrint);
   };
 
   useFilterType = type => {
-    console.log(type);
+    this.setState({ filterType: type });
   };
 
   render() {
-    console.log('log at top of App render', this.state)
-    let filteredBooks = this.state.books;
-    if (this.state.filterPrint === "") {
-    } else {
-      filteredBooks = this.state.books.filter(
-        el => el.volumeInfo.printType === this.state.filterPrint
+    
+    const { books, filterPrint, filterType } = this.state;
+  
+    let filteredBooks = books;
+    if (filterPrint !== "") {
+      filteredBooks = books.filter(
+        el => el.volumeInfo.printType === filterPrint
       );
-    }
+    } 
+    console.log('print filter',filteredBooks);
+    //something isn't working  below here
+    if (filterType !== "") {
+      filteredBooks = books.filter(
+        el => el.volumeInfo.categories.includes(filterType)
+      );
+    }console.log('type filter',filteredBooks);
+
 
     return (
       <main className="App">

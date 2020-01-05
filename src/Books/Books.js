@@ -9,7 +9,10 @@ class Books extends Component {
           return (
             <Details
             key={idx} 
-            title={this.props.books[idx].volumeInfo.title} />
+            title={this.props.books[idx].volumeInfo.title}
+            img= {this.props.books[idx].volumeInfo.imageLinks.thumbnail}
+            authors={this.props.books[idx].volumeInfo.authors}
+             />
           );
         })}
       </div>

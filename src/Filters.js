@@ -9,11 +9,11 @@ class Filters extends Component{
         <select 
         id='type'
         name= 'type'
-        onChange= {e => this.props.useFilterPrint(e.target.value)}
+        onChange= {e => this.props.useFilterType(e.target.value)}
         >
-          <option value=''>Any</option>
-          <option value='horror'>Horror</option>
-          <option value='action'>Action</option>
+          <option value="">Any</option>
+          <option value='science'>Science</option>
+          <option value='nonfiction'>Nonfiction</option>
         </select>
         <label htmlFor='print'>Print</label>
         <select
