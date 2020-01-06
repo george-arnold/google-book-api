@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import Books from "./Books/Books";
-import Search from "./Search";
-import Filters from "./Filters";
+import React, { Component } from 'react';
+import Books from './Books/Books';
+import Search from './Search';
+import Filters from './Filters';
 //create state
 //call API to update state of which books are selected
 
@@ -10,18 +10,16 @@ class App extends Component {
     super();
     this.state = {
       books: [],
-      filterPrint: "",
-      filterType: ""
+      filterPrint: '',
+      filterType: ''
     };
   }
 
   getBooks = searchTerm => {
-    fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=AIzaSyB9N3gY_0s9sVNzP-6g8DX_2LGd3pGSuaA`
-    )
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=AIzaSyB9N3gY_0s9sVNzP-6g8DX_2LGd3pGSuaA`)
       .then(response => {
         if (!response.ok) {
-          throw new Error("Something went wrong, please try again later.");
+          throw new Error('Something went wrong, please try again later.');
         }
         return response;
       })
@@ -47,32 +45,24 @@ class App extends Component {
   };
 
   render() {
-    
     const { books, filterPrint, filterType } = this.state;
-  
-    let filteredBooks = books;
-    if (filterPrint !== "") {
-      filteredBooks = books.filter(
-        el => el.volumeInfo.printType === filterPrint
-      );
-    } 
-    console.log('print filter',filteredBooks);
-    //something isn't working  below here
-    if (filterType !== "") {
-      filteredBooks = books.filter(
-        el => el.volumeInfo.categories.includes(filterType)
-      );
-    }console.log('type filter',filteredBooks);
 
+    let filteredBooks = books;
+    if (filterPrint !== '') {
+      filteredBooks = books.filter(el => el.volumeInfo.printType === filterPrint);
+    }
+    console.log('print filter', filteredBooks);
+    //something isn't working  below here
+    if (filterType !== '') {
+      filteredBooks = books.filter(el => el.volumeInfo.categories.includes(filterType));
+    }
+    console.log('type filter', filteredBooks);
 
     return (
       <main className="App">
         <h1> Google Book Search</h1>
         <Search getBooks={this.getBooks} />
-        <Filters
-          useFilterType={this.useFilterType}
-          useFilterPrint={this.useFilterPrint}
-        />
+        <Filters useFilterType={this.useFilterType} useFilterPrint={this.useFilterPrint} />
 
         <Books books={filteredBooks} />
       </main>

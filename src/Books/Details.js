@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { render } from "@testing-library/react";
+import React, { Component } from 'react';
+import { render } from '@testing-library/react';
 
 let printAuthor;
 const handleClick = () => {
-   printAuthor= this.props.authors.map((x, idx) => {
+  printAuthor = this.props.authors.map((x, idx) => {
     return <p>{this.props.authors[idx]}</p>;
-});
-}
+  });
+};
 
 class Details extends Component {
   render() {

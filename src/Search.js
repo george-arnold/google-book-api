@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class Search extends Component {
   constructor() {
@@ -10,11 +10,12 @@ class Search extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(e){
-    this.setState({ 
-      searchTerm: e.target.value });
-    }
-  handleSubmit(e){
+  handleChange(e) {
+    this.setState({
+      searchTerm: e.target.value
+    });
+  }
+  handleSubmit(e) {
     this.props.getBooks(this.state.searchTerm);
     e.preventDefault();
   }
@@ -24,11 +25,11 @@ class Search extends Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           Name:
-          <input type="text" placeholder='King Henry' value={this.state.searchTerm} onChange={this.handleChange} />
+          <input type="text" placeholder="King Henry" value={this.state.searchTerm} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
       </form>
-    )
+    );
   }
 }
 
