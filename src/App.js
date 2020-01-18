@@ -10,6 +10,7 @@ class App extends Component {
     super();
     this.state = {
       books: [],
+      categories: [],
       filterPrint: '',
       filterType: ''
     };
@@ -25,8 +26,17 @@ class App extends Component {
       })
       .then(response => response.json())
       .then(data => {
+        console.log(data);
+        var mySet = new Set();
+        data.items.forEach(book => {
+          // for each book add the categories
+          book.volumeInfo.categories.forEach(category => mySet.add(category));
+        });
+        const categories = Array.from(mySet);
+        
         this.setState({
           books: data.items,
+          categories,
           error: null
         });
       })
@@ -45,24 +55,22 @@ class App extends Component {
   };
 
   render() {
-    const { books, filterPrint, filterType } = this.state;
+    const { books, filterPrint, filterType, categories } = this.state;
 
     let filteredBooks = books;
     if (filterPrint !== '') {
       filteredBooks = books.filter(el => el.volumeInfo.printType === filterPrint);
     }
-    console.log('print filter', filteredBooks);
-    //something isn't working  below here
+    
     if (filterType !== '') {
       filteredBooks = books.filter(el => el.volumeInfo.categories.includes(filterType));
     }
-    console.log('type filter', filteredBooks);
 
     return (
       <main className="App">
         <h1> Google Book Search</h1>
         <Search getBooks={this.getBooks} />
-        <Filters useFilterType={this.useFilterType} useFilterPrint={this.useFilterPrint} />
+        <Filters useFilterType={this.useFilterType} useFilterPrint={this.useFilterPrint} categories={categories}/>
 
         <Books books={filteredBooks} />
       </main>

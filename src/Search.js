@@ -4,29 +4,36 @@ class Search extends Component {
   constructor() {
     super();
     this.state = {
-      searchTerm: ''
+      searchTerm: {
+        value: ''
+      }
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
     this.setState({
-      searchTerm: e.target.value
+      searchTerm: { value: e }
     });
   }
+
+  // this needs to reset the form
+  // move it to App, pass
   handleSubmit(e) {
-    this.props.getBooks(this.state.searchTerm);
     e.preventDefault();
+    const {searchTerm} = this.state;
+
+    this.props.getBooks(searchTerm.value);
+    
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
+      <form onSubmit={e => this.handleSubmit(e)}>
+        <label htmlFor= "search">
           Name:
-          <input type="text" placeholder="King Henry" value={this.state.searchTerm} onChange={this.handleChange} />
-        </label>
+          </label>
+          <input type="text" name = "search" id= "search" placeholder="King Henry" onChange={e=>this.handleChange(e.target.value)} />
+        
         <input type="submit" value="Submit" />
       </form>
     );
